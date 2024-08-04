@@ -1,7 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="GithubDefaultAccount">
-    <option name="defaultAccountId" value="b218efdb-8560-4b24-ab05-3c7351585548" />
-  </component>
   <component name="ProjectRootManager" version="2" project-jdk-name="ruby-3.3.1-p55" project-jdk-type="RUBY_SDK" />
 </project>
