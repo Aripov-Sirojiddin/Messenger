@@ -1,2 +1,6 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<% provide(:title, 'Sign Up') %>
+<div class="container d-flex flex-column align-items-center mt-3 ">
+  <h1>Sign Up</h1>
+  <%= render "users/signup_form" %>
+</div>
+

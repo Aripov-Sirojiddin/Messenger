@@ -96,6 +96,11 @@ class UserTest < ActiveSupport::TestCase
     assert_not duplicate_user.valid?
   end
 
+  test "username cannot contain spaces" do
+    @user.username = "bad example"
+    assert_not @user.valid?
+  end
+
   test "bio should be 200 characters at most" do
     @user.bio = "a"*201
     assert_not @user.valid?

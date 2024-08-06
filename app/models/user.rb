@@ -10,6 +10,10 @@ class User < ApplicationRecord
               maximum: 50
             }
   validates :username,
+            format: {
+              with: /\A[a-z]+([a-z]*[0-9]*_){0,2}[a-z]*[0-9]*\z/,
+              message: "requires letters, may contain numbers and underscores"
+            },
             uniqueness: true,
             presence: true,
             length: {

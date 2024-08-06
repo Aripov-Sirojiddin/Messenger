@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  def show
+    @user = User.find(params[:id])
+  end
   def new
     @user = User.new
   end
@@ -8,9 +11,10 @@ class UsersController < ApplicationController
     @user.bio = "" if user_params[:bio] == nil
     if @user.valid?
       @user.save
-      redirect_to @user, notice: 'User was successfully created.'
+      flash[:success] = "Welcome to Messenger!"
+      redirect_to @user
     else
-      render :new, notice: 'User was not created.'
+      render :new
     end
   end
 
@@ -34,11 +38,6 @@ class UsersController < ApplicationController
       user.destroy
     end
     redirect_to root_path
-  end
-
-  def show
-    @user = User.find(params[:id])
-    debugger
   end
 
   private
