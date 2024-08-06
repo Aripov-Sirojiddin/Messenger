@@ -14,6 +14,7 @@ class UsersController < ApplicationController
       flash[:success] = "Welcome to Messenger!"
       redirect_to @user
     else
+      flash[:danger] = "There was a problem creating your account. Please try again."
       render :new
     end
   end
