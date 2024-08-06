@@ -1,9 +1,14 @@
 <% provide(:title, @user.name) %>
 
-<div class="container d-flex flex-row">
-  <%= gravatar_for @user %>
+<div class="container d-flex flex-row mt-3">
+  <div>
+    <%= gravatar_for @user %>
+  </div>
   <div class="flex-column">
     <h2><%= @user.name %></h2>
-    <p> Potentially a little bio here wouldn't hurt.</p>
+    <p><%= @user.username %></p>
   </div>
+</div>
+<div class="container">
+  <p><%= @user.bio %></p>
 </div>
