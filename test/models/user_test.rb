@@ -2,14 +2,7 @@ require "test_helper"
 
 class UserTest < ActiveSupport::TestCase
   def setup
-    @user = User.new(
-      name: "Example Name",
-      email: "example@example.com",
-      username: "exampleusername",
-      bio: "example bio",
-      password: "foobar",
-      password_confirmation: "foobar"
-    )
+    @user = users(:example)
   end
 
   test "should be valid" do
@@ -61,7 +54,7 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "email down_cased after saving to db" do
-    email_address = "ExaAmpLE@ExamEpLE.CoM"
+    email_address = "ExAmpLE@ExampLE.CoM"
     @user.email = email_address
     @user.save
     assert_equal email_address.downcase, @user.reload.email

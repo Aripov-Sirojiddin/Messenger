@@ -12,6 +12,7 @@ class UsersController < ApplicationController
     if @user.valid?
       @user.save
       flash[:success] = "Welcome to Messenger!"
+      log_in @user
       redirect_to @user
     else
       flash[:danger] = "There was a problem creating your account. Please try again."
