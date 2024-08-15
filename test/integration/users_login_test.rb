@@ -57,4 +57,20 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     assert_select "a[href=?]", logout_path,      count: 0
     assert_select "a[href=?]", user_path(@user), count: 0
   end
+
+  test "authenticated? should return false for a user with nil digest" do
+    assert_not @user.authenticated?('')
+  end
+
+  test "login with remembering" do
+    log_in_as(@user)
+    assert_equal assigns(:user).remember_token, cookies[:remember_token]
+    assert_not_nil cookies[:remember_token]
+  end
+
+  test "login without remembering" do
+    log_in_as(@user)
+    log_in_as(@user, remember_me: '0')
+    assert_equal cookies[:remember_token], ""
+  end
 end
