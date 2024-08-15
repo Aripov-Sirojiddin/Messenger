@@ -1,0 +1,17 @@
+<% provide(:title, "All users") %>
+<div class="container d-flex flex-column mt-3">
+  <h2>All Users in DB</h2>
+  <% @users.each do |user| %>
+    <%= link_to(user, class: "text-dark") do %>
+      <div class="container d-flex flex-row mt-3">
+        <%= render "users/user", user: user %>
+      </div>
+    <% end %>
+    <div class="mt-2 ml-3">
+      <% if current_user.admin %>
+        <%= button_to "Delete Account", user, method: :delete, class: "btn btn-info mb-4 text-white" %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+

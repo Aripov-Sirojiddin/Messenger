@@ -1,5 +1,10 @@
-<% provide(:title, "Editing @#{@user.username}") %>
+<% provide(:title, "Edit user") %>
 <div class="container d-flex flex-column align-items-center mt-3 ">
-  <h1>Editing <%=@current_user%></h1>
-  <%= render "users/signup_form", action: "Update" %>
+  <h1>Update your profile</h1>
+  <div class="gravatar_edit">
+    <%= gravatar_for @user %>
+  </div>
+  <a href="https://gravatar.com/emails" target="_blank">Change Avatar</a>
+  <%= render "users/form", action: "Update"%>
+  <br>
 </div>

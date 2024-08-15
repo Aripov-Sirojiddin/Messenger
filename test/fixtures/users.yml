@@ -4,3 +4,10 @@ example:
   bio: ""
   email: "example@example.com"
   password_digest: <%=User.digest("password") %>
+
+chad:
+  name: "Chad Chadwick"
+  username: "biggest_chad"
+  bio: "Chad of all Chads"
+  email: "chad@giga.bro"
+  password_digest: <%= User.digest("strongest_password_by_chad!") %>

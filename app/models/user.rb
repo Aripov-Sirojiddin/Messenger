@@ -32,6 +32,7 @@ class User < ApplicationRecord
               with: URI::MailTo::EMAIL_REGEXP
             }
   validates :password,
+            allow_nil: true,
             presence: true,
             length: {
               minimum: 6

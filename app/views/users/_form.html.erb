@@ -1,6 +1,5 @@
 <div class="col-md-6">
   <%= form_with(model: @user, local: true) do |f| %>
-    <% @user.bio = "" %>
     <div class="form-group">
       <%= f.label :name %>
       <%= f.text_field :name, class: "form-control" %>
@@ -13,6 +12,12 @@
       <%= f.label :username %>
       <%= f.text_field :username, class: "form-control" %>
     </div>
+    <% if action == "Update" %>
+      <div class="form-group">
+        <%= f.label :bio %>
+        <%= f.text_area :bio, class: 'form-control' %>
+      </div>
+    <% end %>
     <div class="form-group">
       <%= f.label :password %>
       <%= f.password_field :password, class: "form-control" %>
@@ -33,7 +38,11 @@
         </ul>
       </div>
     <% end %>
-    <br>
-    <%= f.submit "#{action} my account", class: "btn btn-primary btn-block" %>
+    <%= f.submit "#{action} account", class: "btn btn-primary btn-block mt-3" %>
+
+    <% if action == "Update" %>
+      <%= button_to "Delete Account", @user, method: :delete, class: "btn btn-info btn-block mt-3 text-white" %>
+    <% end %>
+
   <% end %>
 </div>

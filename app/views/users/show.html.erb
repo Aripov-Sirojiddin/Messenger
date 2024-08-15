@@ -1,12 +1,11 @@
 <% provide(:title, "@#{@user.username}") %>
 
 <div class="container d-flex flex-row mt-3">
-  <div>
-    <%= gravatar_for @user %>
-  </div>
-  <div class="flex-column">
-    <h2><%= @user.name %></h2>
-    <p><%= @user.username %></p>
+  <%= render "users/user", user: @user %>
+  <div class="mt-2 ml-3">
+    <% if @user == current_user %>
+      <%= link_to "Edit Account", edit_user_path(@user) %>
+    <% end %>
   </div>
 </div>
 <div class="container">

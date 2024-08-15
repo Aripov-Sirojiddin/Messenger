@@ -1,0 +1,12 @@
+=> 
+[32m#<User:0x00007f900227fb20[0m
+ id: [34m[1m1[0m,
+ name: [31m[1m"[0m[31mExample User[0m[31m[1m"[0m,
+ email: [31m[1m"[0m[31mexample@example[0m[31m[1m"[0m,
+ created_at: Thu, 15 Aug 2024 21:05:35.653853000 UTC +00:00,
+ updated_at: Thu, 15 Aug 2024 21:05:35.653853000 UTC +00:00,
+ password_digest: [31m[1m"[0m[31m[FILTERED][0m[31m[1m"[0m,
+ username: [31m[1m"[0m[31mexample[0m[31m[1m"[0m,
+ bio: [31m[1m"[0m[31mA riveting biography![0m[31m[1m"[0m,
+ remember_digest: [36m[1mnil[0m,
+ admin: [36m[1mnil[0m[32m>[0m
