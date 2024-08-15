@@ -1,7 +1,3 @@
 <% provide(:title, "Log in") %>
-<div class="container d-flex flex-column align-items-center mt-3 ">
-  <h1>Log In</h1>
-  <%= render "sessions/login_form" %>
-  <br>
-  <p>Don't have an account? <%=link_to "Sign Up", users_sign_up_path %></p>
-</div>
+<%= render "sessions/login_form" %>
+

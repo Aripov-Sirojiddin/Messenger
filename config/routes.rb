@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'sessions#new'
+  root 'home#index'
 
   get "users/sign_up" => "users#new"
   get "about" => "about#index"

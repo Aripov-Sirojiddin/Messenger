@@ -6,6 +6,7 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "should be valid" do
+    @user.password, @user.password_confirmation = "password", "password"
     assert @user.valid?
   end
 
@@ -36,6 +37,7 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "email validation should accept valid addresses" do
+    @user.password, @user.password_confirmation = "password", "password"
     valid_addresses = %w[user@example.com USER@foo.COM A_US-ER@foo.bar.org
                          first.last@foo.jp alice+bob@baz.cn]
     valid_addresses.each do |valid_address|
@@ -95,7 +97,7 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "bio should be 200 characters at most" do
-    @user.bio = "a"*201
+    @user.bio = "a" * 201
     assert_not @user.valid?
   end
 end

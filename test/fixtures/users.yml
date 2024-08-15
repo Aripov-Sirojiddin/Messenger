@@ -3,4 +3,4 @@ example:
   username: "example"
   bio: ""
   email: "example@example.com"
-  password_digest: <%= User.digest("example") %>
+  password_digest: <%=User.digest("password") %>

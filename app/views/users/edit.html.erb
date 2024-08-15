@@ -1,0 +1,5 @@
+<% provide(:title, "Editing @#{@user.username}") %>
+<div class="container d-flex flex-column align-items-center mt-3 ">
+  <h1>Editing <%=@current_user%></h1>
+  <%= render "users/signup_form", action: "Update" %>
+</div>
