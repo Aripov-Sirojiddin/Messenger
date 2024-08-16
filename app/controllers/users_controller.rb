@@ -47,7 +47,7 @@ class UsersController < ApplicationController
     if user.present?
       user.destroy
     end
-    redirect_back_or root_path
+    redirect_back_or users_path
   end
 
   private

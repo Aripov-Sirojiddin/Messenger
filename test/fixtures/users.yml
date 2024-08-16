@@ -1,4 +1,5 @@
 example:
+  admin: false
   name: "Example"
   username: "example"
   bio: ""
@@ -6,8 +7,42 @@ example:
   password_digest: <%=User.digest("password") %>
 
 chad:
+  admin: true
   name: "Chad Chadwick"
-  username: "biggest_chad"
+  username: "username123"
   bio: "Chad of all Chads"
   email: "chad@giga.bro"
   password_digest: <%= User.digest("strongest_password_by_chad!") %>
+
+michael:
+  name: Michael Example
+  username: "michaelexample"
+  email: michael@example.com
+  password_digest: <%= User.digest('password') %>
+  admin: true
+
+archer:
+  name: Sterling Archer
+  username: "sterling_archer"
+  email: duchess@example.gov
+  password_digest: <%= User.digest('password') %>
+
+lana:
+  name: Lana Kane
+  username: "lanekana"
+  email: hands@example.gov
+  password_digest: <%= User.digest('password') %>
+
+malory:
+  name: Malory Archer
+  username: "maloryarcher"
+  email: boss@example.gov
+  password_digest: <%= User.digest('password') %>
+
+<% 30.times do |n| %>
+user_<%= n %>:
+  name: <%= "User #{n}" %>
+  username: <%="username_#{n}"%>
+  email: <%= "user-#{n}@example.com" %>
+  password_digest: <%= User.digest('password') %>
+<% end %>
