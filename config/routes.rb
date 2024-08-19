@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   root 'home#index'
-  resources :users
 
   get "users/sign_up" => "users#new"
   get "about" => "about#index"
@@ -8,6 +7,7 @@ Rails.application.routes.draw do
   delete "/logout" => "sessions#destroy"
   get "/login" => "sessions#new"
   post "/login" => "sessions#create"
+  resources :users
 
   resources :account_activations, only: [:edit]
 
