@@ -1,0 +1,7 @@
+<h1>Messenger</h1>
+<p>Greetings <%= @user.name %>, welcome to Messenger!</p>
+<br>
+<p>To start using our application please activate your account via following the link below.</p>
+<p>If you didn't request this activation, you can safely delete and disregard this email.</p>
+<br>
+<%= link_to "Activate account", edit_account_activation_url(@user.activation_token, email: @user.email), class: "btn btn-primary btn-block mt-1" %>

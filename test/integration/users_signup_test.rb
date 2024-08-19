@@ -16,9 +16,8 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
       }
     end
     follow_redirect!
-    assert flash[:success]
+    assert flash[:info]
     assert_not flash[:danger]
-    assert_template 'users/show'
   end
   test "taken email" do
     get users_sign_up_path

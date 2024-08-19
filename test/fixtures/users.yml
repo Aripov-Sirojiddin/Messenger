@@ -5,6 +5,8 @@ example:
   bio: ""
   email: "example@example.com"
   password_digest: <%=User.digest("password") %>
+  activated: true
+  activated_at: <%= Time.zone.now %>
 
 chad:
   admin: true
@@ -13,6 +15,8 @@ chad:
   bio: "Chad of all Chads"
   email: "chad@giga.bro"
   password_digest: <%= User.digest("strongest_password_by_chad!") %>
+  activated: true
+  activated_at: <%= Time.zone.now %>
 
 michael:
   name: Michael Example
@@ -20,24 +24,32 @@ michael:
   email: michael@example.com
   password_digest: <%= User.digest('password') %>
   admin: true
+  activated: true
+  activated_at: <%= Time.zone.now %>
 
 archer:
   name: Sterling Archer
   username: "sterling_archer"
   email: duchess@example.gov
   password_digest: <%= User.digest('password') %>
+  activated: true
+  activated_at: <%= Time.zone.now %>
 
 lana:
   name: Lana Kane
   username: "lanekana"
   email: hands@example.gov
   password_digest: <%= User.digest('password') %>
+  activated: true
+  activated_at: <%= Time.zone.now %>
 
 malory:
   name: Malory Archer
   username: "maloryarcher"
   email: boss@example.gov
   password_digest: <%= User.digest('password') %>
+  activated: true
+  activated_at: <%= Time.zone.now %>
 
 <% 30.times do |n| %>
 user_<%= n %>:

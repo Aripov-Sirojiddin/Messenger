@@ -1,9 +1,11 @@
 class UsersController < ApplicationController
   before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
   before_action :correct_user, only: [:edit, :update, :destroy]
+
   def index
     @users = User.paginate(page: params[:page])
   end
+
   def show
     @user = User.find(params[:id])
   end
@@ -16,9 +18,9 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     @user.bio = "" if user_params[:bio] == nil
     if @user.save
-      flash[:success] = "Welcome to Messenger!"
-      log_in @user
-      redirect_to @user
+      UserMailer.account_activation(@user).deliver_now
+      flash[:info] = "Please check your email to activate your account."
+      redirect_to root_url
     else
       flash[:danger] = "There was a problem creating your account. Please try again."
       render :new
@@ -47,7 +49,11 @@ class UsersController < ApplicationController
     if user.present?
       user.destroy
     end
-    redirect_back_or users_path
+    redirect_to root_path
+  end
+
+  def delete
+    @user = User.find(params[:id])
   end
 
   private

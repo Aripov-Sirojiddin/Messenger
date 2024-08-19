@@ -1,0 +1,6 @@
+<% provide(:title, "Delete @#{@user.username}?") %>
+<div class="container d-flex flex-column align-items-center mt-3 ">
+  <h1>Are you sure you want to delete @<%= @user.username%>?</h1>
+  <h2>It will be gone forever! (A very long time) </h2>
+  <%= button_to "Yes, delete my account forever!", @user, method: :delete, class: "btn btn-danger btn-block mt-3 text-white" %>
+</div>
