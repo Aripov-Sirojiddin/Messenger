@@ -1,0 +1,37 @@
+<div class="col-md-6">
+  <%= form_with(model: @user, local: true) do |f| %>
+    <div class="form-group">
+      <%= f.label :name %>
+      <%= f.text_field :name, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :username %>
+      <%= f.text_field :username, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :bio %>
+      <%= f.text_area :bio, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :password %>
+      <%= f.password_field :password, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :password_confirmation, "Confirm Password" %>
+      <%= f.password_field :password_confirmation, class: "form-control" %>
+    </div>
+    <% if @user.errors.any? %>
+      <div class="alert alert-danger">
+        <%= "#{pluralize(@user.errors.count, "error")} need to be addressed before account creation" %>
+      </div>
+      <div id="error_explanation" style="color:#fa4f4f">
+        <ul class="list-group">
+          <% @user.errors.full_messages.each do |error| %>
+            <li class="list-group-item"><%= error %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <%= f.submit "Create account", class: "btn btn-primary btn-block mt-3" %>
+  <% end %>
+</div>

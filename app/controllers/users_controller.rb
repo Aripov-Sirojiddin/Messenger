@@ -47,6 +47,7 @@ class UsersController < ApplicationController
     store_location
     user = User.find(params[:id])
     if user.present?
+      log_out
       user.destroy
     end
     redirect_to root_path
