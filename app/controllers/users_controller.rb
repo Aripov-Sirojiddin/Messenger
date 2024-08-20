@@ -49,7 +49,7 @@ class UsersController < ApplicationController
     if user.present?
       user.destroy
     end
-    redirect_to root_path
+    redirect_to users_path
   end
 
   def delete
