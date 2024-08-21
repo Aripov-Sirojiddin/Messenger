@@ -50,7 +50,7 @@ class UsersController < ApplicationController
       log_out
       user.destroy
     end
-    redirect_to root_path
+    redirect_to users_path
   end
 
   def delete

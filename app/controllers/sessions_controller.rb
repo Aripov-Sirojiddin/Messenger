@@ -6,7 +6,6 @@ class SessionsController < ApplicationController
   def create
     @user = User.find_by(email: params[:session][:email].downcase)
 
-
     if @user&.authenticate(params[:session][:password])
       unless @user.activated
         flash[:warning] = "Please activate your account. Check your email for activation link."
