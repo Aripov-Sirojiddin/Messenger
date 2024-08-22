@@ -9,7 +9,7 @@ User.create!(name: "Sam Aripov",
              admin: true)
 
 # Generate a bunch of additional users.
-99.times do |n|
+100.times do |n|
   name = Faker::Name.name
   email = "example-#{n + 1}@example.org"
   username = "awesome_user#{n + 1}"

@@ -3,7 +3,10 @@ class UsersController < ApplicationController
   before_action :correct_user, only: [:edit, :update, :destroy]
 
   def index
-    @users = User.paginate(page: params[:page])
+    @page = Integer(params[:page])
+    @per_page = 30
+    @users = User.all
+    @users_to_show = @users.each_slice(@per_page).to_a[@page]
   end
 
   def show

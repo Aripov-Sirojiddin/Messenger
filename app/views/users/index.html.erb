@@ -1,7 +1,8 @@
 <% provide(:title, "All users") %>
 <div class="container d-flex flex-column mt-3">
   <h2>All Users in DB</h2>
-  <% @users.each do |user| %>
+  <%= render "arrows"%>
+  <% @users_to_show.each do |user| %>
     <%= link_to(user, class: "text-dark") do %>
       <div class="container d-flex flex-row mt-3">
         <%= render "users/user", user: user %>
@@ -13,5 +14,6 @@
       <% end %>
     </div>
   <% end %>
+  <%= render "arrows"%>
 </div>
 
