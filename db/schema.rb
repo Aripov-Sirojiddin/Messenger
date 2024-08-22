@@ -24,6 +24,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_20_163339) do
     t.string "activation_digest"
     t.boolean "activated", default: false
     t.datetime "activated_at"
+    t.string "password_reset_digest"
+    t.datetime "password_reset_sent_at"
     t.string "reset_digest"
     t.datetime "reset_sent_at"
     t.index ["email"], name: "index_users_on_email", unique: true
