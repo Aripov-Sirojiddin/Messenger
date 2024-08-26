@@ -10,7 +10,11 @@ class UsersController < ApplicationController
   end
 
   def show
+    @page = params[:page].nil? ? 0 : Integer(params[:page])
+    @per_page = 50
     @user = User.find(params[:id])
+    @microposts = @user.microposts.all
+    @microposts_to_show = @user.microposts.each_slice(@per_page).to_a[@page]
   end
 
   def new
