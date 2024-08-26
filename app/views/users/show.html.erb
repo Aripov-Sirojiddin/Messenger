@@ -8,7 +8,7 @@
 </div>
 <div class="container d-flex justify-content-center">
   <% if @user == current_user %>
-    <%= button_to "Edit Account", edit_user_path(@user), method: :get, class: "btn btn-info mr-2 text-white" %>
+    <%= link_to "Edit Account", edit_user_path(@user), class: "btn btn-info mr-2 text-white" %>
   <% end %>
 </div>
 <% if @user.microposts.any? %>
