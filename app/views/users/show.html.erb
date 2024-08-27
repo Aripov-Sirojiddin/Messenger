@@ -1,13 +1,24 @@
 <% provide(:title, "@#{@user.username}") %>
 
-<div class="container d-flex flex-row mt-3">
+<div class="container d-flex justify-content-center mt-3">
   <%= render "users/user", user: @user %>
-  <div class="mt-2 ml-3">
-    <% if @user == current_user %>
-      <%= link_to "Edit Account", edit_user_path(@user) %>
-    <% end %>
-  </div>
 </div>
-<div class="container">
+<div class="container d-flex justify-content-center">
   <p><%= @user.bio %></p>
 </div>
+<div class="container d-flex justify-content-center">
+  <% if @user == current_user %>
+    <%= link_to "Edit Account", edit_user_path(@user), class: "btn btn-info mr-2 text-white" %>
+  <% end %>
+</div>
+<% if @user.microposts.any? %>
+  <div class="container d-flex flex-column">
+    <h3 class="ml-5">Microposts (<%= @user.microposts.count %>)</h3>
+    <ol class="microposts">
+      <%= render @microposts_to_show %>
+    </ol>
+    <div class="ml-4 align-center">
+      <%= render "users/microposts_arrows" %>
+    </div>
+  </div>
+<% end %>

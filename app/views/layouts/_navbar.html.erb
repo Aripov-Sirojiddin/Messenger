@@ -8,7 +8,7 @@
       <li class="nav-item "><%= link_to "Home", root_path, class: "nav-link" %></li>
       <li class="nav-item "><%= link_to "Users", users_path(page: 0), class: "nav-link" %></li>
       <% if logged_in? %>
-        <%= link_to "Profile", @current_user, class: "nav-link" %>
+        <%= link_to "Profile", user_path(id: @current_user.id, page: 0), class: "nav-link" %>
         <%= button_to "Log out", logout_path, method: :delete, class: "nav-link border-0 bg-transparent" %>
       <% else %>
         <li class="nav-item "><%= link_to "Log in", login_path, class: "nav-link" %></li>

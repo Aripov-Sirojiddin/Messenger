@@ -3,6 +3,7 @@ require "test_helper"
 class MicropostTest < ActiveSupport::TestCase
   def setup
     @user = users(:chad)
+    # This code is not idiomatically correct.
     @micropost = @user.microposts.build(content: "What up! I am a micropost!", user_id: @user.id)
   end
 
@@ -24,7 +25,7 @@ class MicropostTest < ActiveSupport::TestCase
     @micropost.content = "a" * 141
     assert_not @micropost.valid?
   end
-
+  
   test "order must be most recent" do
     assert_equal microposts(:most_recent), Micropost.first
   end

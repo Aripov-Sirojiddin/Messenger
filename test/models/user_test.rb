@@ -100,5 +100,4 @@ class UserTest < ActiveSupport::TestCase
     @user.bio = "a" * 201
     assert_not @user.valid?
   end
-
 end
