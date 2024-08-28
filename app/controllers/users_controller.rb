@@ -5,16 +5,18 @@ class UsersController < ApplicationController
   def index
     @page = params[:page].nil? ? 0 : Integer(params[:page])
     @per_page = 30
-    @users = User.all
-    @users_to_show = @users.each_slice(@per_page).to_a[@page]
+    @set_page_to = "#{users_path}?page="
+    @list_to_paginate = User.all
+    @users_to_show = @list_to_paginate.each_slice(@per_page).to_a[@page]
   end
 
   def show
     @page = params[:page].nil? ? 0 : Integer(params[:page])
-    @per_page = 50
+    @per_page = 25
     @user = User.find(params[:id])
-    @microposts = @user.microposts.all
-    @microposts_to_show = @user.microposts.each_slice(@per_page).to_a[@page]
+    @set_page_to = "#{user_path(@user)}?page="
+    @list_to_paginate = @user.microposts.all
+    @microposts_to_show = @list_to_paginate.all.each_slice(@per_page).to_a[@page]
   end
 
   def new

@@ -1,6 +1,6 @@
-<li class="list-group-item" id="micropost-<%= micropost.id %>">
-  <div class="d-flex flex-row">
-    <%= link_to gravatar_for(micropost.user, size: 50), micropost.user %>
+<li class="list-group-item p-4 w-100" id="micropost-<%= micropost.id %>">
+  <div class="d-flex flex-row mb-2">
+    <%= link_to gravatar_for(micropost.user, size: 60), micropost.user %>
     <div class="container d-flex flex-row">
       <div class="d-flex flex-column">
         <span class="user"><%= micropost.user.name %></span>

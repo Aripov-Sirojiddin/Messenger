@@ -1,0 +1,45 @@
+<div class="container d-flex flex-row mt-3">
+  <% previous_page = can_go_to_previous_page?(@list_to_paginate, @page, @per_page) %>
+  <% next_page = can_go_to_next_page?(@list_to_paginate, @page, @per_page) %>
+  <% buttons_to_render = [Integer(@page)] %>
+  <% buttons_to_render.unshift(Integer(@page) - 1) if previous_page %>
+  <% buttons_to_render.append(Integer(@page) + 1) if next_page %>
+
+  <% if previous_page %>
+    <%= link_to "←", "#{@set_page_to}#{Integer(@page) - 1}", class: "btn btn-primary mb-4 mr-1" %>
+  <% else %>
+    <%= link_to "←", "#{@set_page_to}#{@page}", class: "btn btn-primary mb-4 disabled mr-1" %>
+  <% end %>
+  <% pages = total_pages(@list_to_paginate, @per_page) %>
+
+  <% unless buttons_to_render.include?(0) %>
+    <% if @page == 0 %>
+      <%= link_to "1", "#{@set_page_to}#{0}", class: "btn btn-primary mb-4 mx-1" %>
+    <% else %>
+      <%= link_to "1", "#{@set_page_to}#{0}", class: "btn btn-outline-primary mb-4 mx-1" %>
+    <% end %>
+    ...
+  <% end %>
+
+  <% buttons_to_render.each do |page| %>
+    <% if page == @page %>
+      <%= link_to page + 1, "#{@set_page_to}#{page}", class: "btn btn-primary mb-4 mx-1" %>
+    <% else %>
+      <%= link_to page + 1, "#{@set_page_to}#{page}", class: "btn btn-outline-primary mb-4 mx-1" %>
+    <% end %>
+  <% end %>
+  <% unless buttons_to_render.include?(pages-1) %>
+    ...
+    <% if @page == pages - 1 %>
+      <%= link_to pages, "#{@set_page_to}#{pages - 1}", class: "btn btn-primary mb-4 mx-1" %>
+    <% else %>
+      <%= link_to pages, "#{@set_page_to}#{pages - 1}", class: "btn btn-outline-primary mb-4 mx-1" %>
+    <% end %>
+  <% end %>
+
+  <% if next_page %>
+    <%= link_to "→", "#{@set_page_to}#{Integer(@page) + 1}", class: "btn btn-primary mb-4 ml-1" %>
+  <% else %>
+    <%= link_to "→", "#{@set_page_to}#{@page}", class: "btn btn-primary mb-4 disabled ml-1" %>
+  <% end %>
+</div>

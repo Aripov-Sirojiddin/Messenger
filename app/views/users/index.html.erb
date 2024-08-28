@@ -1,19 +1,18 @@
 <% provide(:title, "All users") %>
-<div class="container d-flex flex-column mt-3">
-  <h2>All Users in DB</h2>
-  <%= render "users_arrows"%>
-  <% @users_to_show.each do |user| %>
-    <%= link_to(user_path(id: user.id, page: 0), class: "text-dark") do %>
-      <div class="container d-flex flex-row mt-3">
-        <%= render "users/user", user: user %>
-      </div>
-    <% end %>
-    <div class="mt-2 ml-3">
-      <% if current_user.admin %>
-        <%= button_to "Delete Account", user, method: :delete, class: "btn btn-info mb-4 text-white" %>
+<div class="container d-flex justify-content-center mt-3">
+  <div class="d-flex flex-column align-items-center">
+    <h2>All Users in DB</h2>
+    <%= render "users/arrows" %>
+    <ol>
+      <% @users_to_show.each do |user| %>
+        <li class="list-group-item p-4 w-100" id="user-<%= user.id %>">
+          <%= link_to user do %>
+            <%= render user %>
+          <% end %>
+        </li>
       <% end %>
-    </div>
-  <% end %>
-  <%= render "users_arrows"%>
+    </ol>
+    <%= render "users/arrows" %>
+  </div>
 </div>
 
