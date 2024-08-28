@@ -11,8 +11,11 @@ class UsersController < ApplicationController
   end
 
   def show
+    # Prep micropost for user in-case they wanna post
+    @micropost = current_user.microposts.build if logged_in?
+    #prep the stuff needed for arrows
     @page = params[:page].nil? ? 0 : Integer(params[:page])
-    @per_page = 25
+    @per_page = 15
     @user = User.find(params[:id])
     @set_page_to = "#{user_path(@user)}?page="
     @list_to_paginate = @user.microposts.all
@@ -56,7 +59,7 @@ class UsersController < ApplicationController
     store_location
     user = User.find(params[:id])
     if user.present?
-      log_out
+      log_out unless current_user.admin
       user.destroy
     end
     redirect_to users_path

@@ -1,0 +1,10 @@
+<div class="container d-flex flex-column">
+  <%= form_with model: @micropost, class: "container d-flex flex-column" do |f| %>
+    <%= render "shared/error_msg", object: f.object %>
+    <div class="form-group">
+      <%= f.text_area :content, placeholder: "Content", class: 'form-control' %>
+    </div>
+
+    <%= f.submit "Post", class: "btn btn-primary" %>
+  <% end %>
+</div>

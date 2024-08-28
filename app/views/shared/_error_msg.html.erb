@@ -1,0 +1,12 @@
+<% if object.errors.any? %>
+  <div class="alert alert-danger">
+    <%= "#{pluralize(object.errors.count, "error")} need to be addressed before account creation" %>
+  </div>
+  <div id="error_explanation" style="color:#fa4f4f">
+    <ul class="list-group">
+      <% object.errors.full_messages.each do |error| %>
+        <li class="list-group-item"><%= error %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

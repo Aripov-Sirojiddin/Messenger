@@ -1,14 +1,11 @@
-<div class="container d-flex mt-3">
-  <div class="p-2">
+<div class="container d-flex mt-3 w-100">
+  <div class="">
     <%= gravatar_for user %>
   </div>
   <div class="p-2 flex-column">
     <h2><%= user.name %></h2>
-    <p>@<%= user.username %></p>
-  </div>
-  <div class="ml-auto p-2 mt-2 ml-3">
-    <% if current_user.admin %>
-      <%= button_to "Delete Account", user, method: :delete, class: "btn btn-info mb-4 text-white" %>
+    <%= link_to user do %>
+      <p>@<%= user.username %></p>
     <% end %>
   </div>
 </div>
