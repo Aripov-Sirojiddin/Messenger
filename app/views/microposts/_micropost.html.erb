@@ -1,4 +1,4 @@
-<li class="list-group-item w-100" id="micropost-<%= micropost.id %>">
+<li class="list-group-item mt-3" id="micropost-<%= micropost.id %>" style="width: 32.3vw;">
   <div class="d-flex flex-row mb-2">
     <%= link_to gravatar_for(micropost.user, size: 60), micropost.user %>
     <div class="container d-flex flex-row">
@@ -9,12 +9,12 @@
     </div>
     <span class="timestamp text-nowrap">Posted <%= time_ago_in_words(micropost.created_at) %> ago</span>
   </div>
-  <div  class="content d-flex flex-column">
-        <%= image_tag(micropost.image, style: 'width: 30%;', class: "w-25") if micropost.image.attached? %>
+  <div class="d-flex flex-column">
+        <%= image_tag micropost.image, style: 'width: 30vw;' if micropost.image.attached? %>
         <%= micropost.content %>
   </div>
   <div class="ml-auto mt-2">
-    <% if current_user.admin || current_user?(micropost.user) %>
+    <% if current_user?(micropost.user) %>
       <%= button_to "Delete", micropost, method: :delete, class: "btn btn-primary mb-4 text-white", data: { "turbo-method": :delete, "turbo-confirm": "Are you sure?" } %>
     <% end %>
   </div>

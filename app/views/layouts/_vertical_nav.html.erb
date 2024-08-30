@@ -1,4 +1,4 @@
-<div class="list-group w-75">
+<div class="list-group w-100">
   <%= link_to "Home", root_path, class: "list-group-item list-group-item-action #{"active" if page == "Home"}" %>
   <%= link_to "Users", users_path(page: 0), class: "list-group-item list-group-item-action #{"active" if page == "Users"}" %>
   <% if logged_in? %>

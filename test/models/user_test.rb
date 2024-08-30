@@ -100,4 +100,19 @@ class UserTest < ActiveSupport::TestCase
     @user.bio = "a" * 201
     assert_not @user.valid?
   end
+
+  test "should follow and unfollow a user" do
+    chad = users(:chad)
+    mihail = users(:michael)
+    assert_not mihail.following?(chad)
+    mihail.follow(chad)
+    assert mihail.following?(chad)
+    assert chad.followers.include?(mihail)
+    mihail.unfollow(chad)
+    assert_not mihail.following?(chad)
+    assert_not chad.followers.include?(mihail)
+
+    mihail.follow(mihail)
+    assert_not mihail.following?(mihail)
+  end
 end
