@@ -2,7 +2,7 @@
 
 <div class="d-flex flex-column align-items-center">
   <% if logged_in? %>
-    <p>User feed will go here</p>
+    <%= render current_user.feed %>
   <% else %>
     <%= render "sessions/login_form" %>
   <% end %>

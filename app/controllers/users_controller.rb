@@ -1,13 +1,32 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
+  before_action :logged_in_user, only: [:index, :edit, :update, :destroy, :following, :followers]
   before_action :correct_user, only: [:edit, :update, :destroy]
-
+  def following
+    @title = "Following"
+    @user  = User.find(params[:id])
+    @per_page = 30
+    @page = params[:page].nil? ? 0 : Integer(params[:page])
+    @set_page_to = "#{user_path(@user)}/following?page="
+    @list_to_paginate = @user.following.to_a
+    @users_to_show = @list_to_paginate.each_slice(@per_page).to_a[@page] || []
+    render 'show_follow', status: :unprocessable_entity
+  end
+  def followers
+    @title = "Followers"
+    @user  = User.find(params[:id])
+    @per_page = 30
+    @page = params[:page].nil? ? 0 : Integer(params[:page])
+    @set_page_to = "#{user_path(@user)}/followers?page="
+    @list_to_paginate = @user.followers.to_a
+    @users_to_show = @list_to_paginate.each_slice(@per_page).to_a[@page]|| []
+    render 'show_follow', status: :unprocessable_entity
+  end
   def index
     @page = params[:page].nil? ? 0 : Integer(params[:page])
     @per_page = 30
     @set_page_to = "#{users_path}?page="
     @list_to_paginate = User.all
-    @users_to_show = @list_to_paginate.each_slice(@per_page).to_a[@page]
+    @users_to_show = @list_to_paginate.each_slice(@per_page).to_a[@page]|| []
   end
 
   def show
@@ -19,12 +38,13 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @set_page_to = "#{user_path(@user)}?page="
     @list_to_paginate = @user.microposts.all
-    @microposts_to_show = @list_to_paginate.all.each_slice(@per_page).to_a[@page]
+    @microposts_to_show = @list_to_paginate.all.each_slice(@per_page).to_a[@page]|| []
   end
 
   def new
     @user = User.new
   end
+  # Returns a user's status feed.
 
   def create
     @user = User.new(user_params)

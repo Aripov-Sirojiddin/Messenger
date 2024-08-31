@@ -51,9 +51,14 @@ class User < ApplicationRecord
   has_secure_password
 
   def follow other_user
-    following << other_user unless self == other_user || following.include?(other_user)
+    following << other_user unless self == other_user
   end
-
+  def feed
+    following_ids = "SELECT followed_id FROM relationships
+                      WHERE follower_id = :user_id"
+    Micropost.where("user_id IN (#{following_ids})
+                      OR user_id = :user_id", user_id: id)
+  end
   def unfollow other_user
     following.delete other_user
   end

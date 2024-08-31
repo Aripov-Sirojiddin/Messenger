@@ -8,6 +8,9 @@
         <%= link_to "Edit", edit_user_path(@user), class: "mt-4  mr-5" %>
       <% end %>
     </div>
+    <section class="stats">
+      <%= render 'layouts/stats' %>
+    </section>
     <p><%= @user.bio %></p>
     <% if @user == current_user %>
       <%= render "microposts/micropost_form" %>
@@ -15,6 +18,7 @@
     <% end %>
   </div>
   <div class="d-flex flex-column align-items-center">
+    <%= render "users/follow_form" if logged_in? %>
     <% posts_count = @user.microposts.count %>
     <h3> <%= pluralize(posts_count, "Micropost") %></h3>
     <% if @user.microposts.any? %>
