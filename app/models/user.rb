@@ -10,7 +10,7 @@ class User < ApplicationRecord
 
   before_create :create_activation_digest
   before_save :downcase_email_username
-
+  #Pros apperantly do not write any documentation
   validates :name,
             presence: true,
             length: {
